@@ -534,7 +534,7 @@ def color_label(val):
         return f"color:{NORMAL_COLOR}; font-weight:700; font-family:'JetBrains Mono',monospace"
     except:
         return ""
-        
+
 st.dataframe(
     df_result.style
         .map(color_label, subset=["anomaly"])
@@ -553,8 +553,8 @@ st.markdown('<div class="ct">Dataset with anomaly labels and scores</div>', unsa
 
 st.dataframe(
     df_result.style
-        .applymap(color_label, subset=["anomaly"])
-        .applymap(color_anomaly, subset=["anomaly_score"]),
+        .map(color_label, subset=["anomaly"])
+        .map(color_anomaly, subset=["anomaly_score"]),
     use_container_width=True, height=320
 )
 
