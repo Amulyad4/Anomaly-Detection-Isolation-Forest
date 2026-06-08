@@ -526,6 +526,15 @@ def color_anomaly(val):
     except:
         return ""
 
+def color_label(val):
+    try:
+        v = int(val)
+        if v == -1:
+            return f"color:{ANOMALY_COLOR}; font-weight:700; font-family:'JetBrains Mono',monospace"
+        return f"color:{NORMAL_COLOR}; font-weight:700; font-family:'JetBrains Mono',monospace"
+    except:
+        return ""
+        
 st.dataframe(
     df_result.style
         .map(color_label, subset=["anomaly"])
@@ -540,14 +549,7 @@ st.dataframe(
 st.markdown("### 🏷️ Full Results")
 st.markdown('<div class="ct">Dataset with anomaly labels and scores</div>', unsafe_allow_html=True)
 
-def color_label(val):
-    try:
-        v = int(val)
-        if v == -1:
-            return f"color:{ANOMALY_COLOR}; font-weight:700; font-family:'JetBrains Mono',monospace"
-        return f"color:{NORMAL_COLOR}; font-weight:700; font-family:'JetBrains Mono',monospace"
-    except:
-        return ""
+
 
 st.dataframe(
     df_result.style
