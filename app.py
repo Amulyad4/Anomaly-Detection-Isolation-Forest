@@ -527,11 +527,11 @@ def color_anomaly(val):
         return ""
 
 st.dataframe(
-    df_anomalies.style.map(
-    color_anomaly,
-    subset=["anomaly_score"]
-),
-    use_container_width=True, height=320
+    df_result.style
+        .map(color_label, subset=["anomaly"])
+        .map(color_anomaly, subset=["anomaly_score"]),
+    use_container_width=True,
+    height=320
 )
 
 # ══════════════════════════════════════════════════════════════════════════════
